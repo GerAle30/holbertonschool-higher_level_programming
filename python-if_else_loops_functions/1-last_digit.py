@@ -2,11 +2,9 @@
 import random
 
 number = random.randint(-10000, 10000)
-# obtener el ultimo digito
 last_digit = number % 10 if number >= 0 else -((-number) % 10)
 
-    # Construir el mensaje
-print(f"Last digit of {number} is {last_digit}", end=" ")
+print(f"Last digit of {number} is {last_digit}", end=' ')
 
 if last_digit > 5:
     print("and is greate than 5")
