@@ -1,11 +1,14 @@
 #!/usr/bin/python3
+"""
+Retrieve an element from a list at a specific index.
 
-def print_list_integer(my_list=[]):
-    for number in my_list:
-        print("{:d}".format(number))
+Args:
+    my_list (list): The list to search
+    idx (int): The index to retrieve
 
-def element_at(my_list, idx):
-    """Retireve an element from a list at specific index"""
+    returns:
+        The element at the specified index or None if index is ot of range"""
+
     if idx < 0 or idx >= len(my_list):
         return None
-    return my_list[idx]"""
+    return my_list[idx]
