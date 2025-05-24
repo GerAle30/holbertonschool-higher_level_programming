@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+"""Defines a class Square with size validation."""
+
+
 class Square:
+    """Represents a square."""
+    
+    
     def __init__(self, size=0):
         """Initialize a new square.
 
