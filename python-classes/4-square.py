@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Square with getter and setter for size."""
 
+
 class Square:
     """Represents a square."""
 
@@ -49,3 +50,4 @@ class Square:
             The area of the square.
         """
         return self.__size ** 2
+
