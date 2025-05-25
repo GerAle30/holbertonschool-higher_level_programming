@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Square with size and position for printing."""
 
+
 class Square:
     """Represents a square with size and position."""
 
