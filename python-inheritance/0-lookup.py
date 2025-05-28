@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
 """This module defines a function to look up the methods"""
+
+
 def lookup(obj):
-    
-    
-    """ 
+
+    """
     Returns a list of attributes adn methods of an object
 
     Args:
