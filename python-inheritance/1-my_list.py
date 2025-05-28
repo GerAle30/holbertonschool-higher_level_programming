@@ -13,5 +13,6 @@ class mylist(list):
     Adds a method to print the list in sorted order"""
 
     def print_sorted(self):
-        """ Prints the list in sorted order"""
+        """ Prints the list in sorted (ascending) order
+        order without modifying the original list"""
         print(sorted(self))
