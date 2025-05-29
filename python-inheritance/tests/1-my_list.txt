@@ -1,7 +1,0 @@
->>> from 1-my_list import MyList
->>> ml = MyList()
->>> ml.extend([7, 2, 9])
->>> ml.print_sorted()
-[2, 7, 9]
->>> print(ml)
-[7, 2, 9]
