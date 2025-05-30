@@ -1,0 +1,17 @@
+"""
+>>> is_same_class(5, int)
+True
+>>> is_same_class(True, int)
+False
+>>> is_same_class("hello", str)
+True
+>>> is_same_class([], list)
+True
+>>> is_same_class(5.0, float)
+True
+>>> class Base: pass
+>>> class Derived(Base): pass
+>>> is_same_class(Derived(), Base)
+False
+"""
+
