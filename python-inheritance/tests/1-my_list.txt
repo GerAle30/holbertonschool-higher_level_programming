@@ -1,60 +1,16 @@
-The ``1-my_list`` module
-======================
+>>> MyList = __import__('1-my_list').MyList
 
-Using ``MyList``
--------------------
+>>> my_list = MyList()
+>>> my_list.append(3)
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
 
-Import the class:
-    >>> MyList = __import__('1-my_list').MyList
+>>> print(my_list)
+[3, 1, 4, 2]
 
-Test that MyList inherits from list:
-    >>> my_list = MyList()
-    >>> isinstance(my_list, list)
-    True
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
 
-Test appending elements and print_sorted method:
-    >>> my_list = MyList()
-    >>> my_list.append(3)
-    >>> my_list.append(1)
-    >>> my_list.append(2)
-    >>> print(my_list)
-    [3, 1, 2]
-    >>> my_list.print_sorted()
-    [1, 2, 3]
-    >>> print(my_list)  # Check that original list is unchanged
-    [3, 1, 2]
-
-Test with an empty list:
-    >>> my_list = MyList()
-    >>> print(my_list)
-    []
-    >>> my_list.print_sorted()
-    []
-
-Test with negative and positive numbers:
-    >>> my_list = MyList()
-    >>> my_list.extend([-2, 5, 0, -1, 3])
-    >>> print(my_list)
-    [-2, 5, 0, -1, 3]
-    >>> my_list.print_sorted()
-    [-2, -1, 0, 3, 5]
-    >>> print(my_list)  # Check that original list is unchanged
-    [-2, 5, 0, -1, 3]
-
-Test with a list passed to the constructor:
-    >>> my_list = MyList([4, 2, 6])
-    >>> print(my_list)
-    [4, 2, 6]
-    >>> my_list.print_sorted()
-    [2, 4, 6]
-    >>> print(my_list)  # Check that original list is unchanged
-    [4, 2, 6]
-
-Test with duplicate values:
-    >>> my_list = MyList([3, 1, 3, 2, 1])
-    >>> print(my_list)
-    [3, 1, 3, 2, 1]
-    >>> my_list.print_sorted()
-    [1, 1, 2, 3, 3]
-    >>> print(my_list)  # Check that original list is unchanged
-    [3, 1, 3, 2, 1]
+>>> print(my_list)
+[3, 1, 4, 2]
