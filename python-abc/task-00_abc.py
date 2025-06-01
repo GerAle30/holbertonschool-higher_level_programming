@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Defines an abstract Animal class and two subclasses Dog and Cat."""
 
+
 from abc import ABC, abstractmethod
+
 
 class Animal(ABC):
     """Abstract base class for animals."""
