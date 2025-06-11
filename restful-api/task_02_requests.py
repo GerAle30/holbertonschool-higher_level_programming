@@ -22,7 +22,7 @@ def fetch_and_print_posts():
                     posts = response.json()
                     data = [{"id": post["id"], "title": post["title"], "body": post["body"]} for post in posts]
 
-                    with open("posts.csv, mode="W", newline="", endcoding="utf-8") as csvfile:
+                    with open("posts.csv, mode="w", newline="", endcoding="utf-8") as csvfile:
                         fieldnames = ["id", "tutle", "body"]
                          write = csv.DictWrite(csvfile, fieldnames=fieldnames)
 
