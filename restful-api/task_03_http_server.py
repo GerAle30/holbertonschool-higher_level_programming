@@ -1,75 +1,62 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
-Simple web server using http.server module
-
-Handles:
-- GET /           → plain text message
-- GET /data       → JSON dataset
-- GET /status     → plain OK response
-- GET /info       → JSON with info metadata
-- Any other route → 404 Not Found with error message
+A simple HTTP server using http.server module.
+Handles multiple endpoints with plain text and JSON responses.
 """
 
+import http.server
 import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http import HTTPStatus
 
-# Sample datasets
-SAMPLE_DATA = {"name": "John", "age": 30, "city": "New York"}
-INFO_DATA = {"version": "1.0", "description": "A simple API built with http.server"}
 
-class MyRequestHandler(BaseHTTPRequestHandler):
-    """Custom HTTP request handler for GET endpoints."""
+class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
+    """Custom handler to serve HTTP requests."""
 
     def do_GET(self):
-        """Handle GET requests based on the request path."""
-        if self.path == "/":
-            self.send_response(200)
-            self.send_header("Content-Type", "text/plain")
+        """Handle GET requests with different endpoints."""
+        if self.path == '/':
+            self.send_response(HTTPStatus.OK)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
 
-        elif self.path == "/data":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
+        elif self.path == '/data':
+            self.send_response(HTTPStatus.OK)
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps(SAMPLE_DATA).encode())
+            data = {
+                "name": "John",
+                "age": 30,
+                "city": "New York"
+            }
+            self.wfile.write(json.dumps(data).encode('utf-8'))
 
-        elif self.path == "/status":
-            self.send_response(200)
-            self.send_header("Content-Type", "text/plain")
+        elif self.path == '/status':
+            self.send_response(HTTPStatus.OK)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"OK")
 
-        elif self.path == "/info":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
+        elif self.path == '/info':
+            self.send_response(HTTPStatus.OK)
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps(INFO_DATA).encode())
+            info = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            self.wfile.write(json.dumps(info).encode('utf-8'))
 
         else:
-            self.send_response(404)
-            self.send_header("Content-Type", "application/json")
+            self.send_response(HTTPStatus.NOT_FOUND)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            error_message = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error_message).encode())
-
-    def log_message(self, format, *args):
-        """Disable default logging (optional)."""
-        return
+            self.wfile.write(b"Endpoint not found")
 
 
-def run_server(port=8000):
-    """Start the HTTP server on the specified port."""
+if __name__ == '__main__':
+    port = 8000
     server_address = ('', port)
-    httpd = HTTPServer(server_address, MyRequestHandler)
-    print(f"Serving on http://localhost:{port} ...")
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\nShutting down server...")
-        httpd.server_close()
-
-
-if __name__ == "__main__":
-    run_server()
-
+    httpd = http.server.HTTPServer(server_address, SimpleAPIHandler)
+    print(f"Starting server on port {port}...")
+    httpd.serve_forever()
