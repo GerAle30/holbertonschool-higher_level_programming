@@ -1,4 +1,4 @@
 -- Lists all ecord with score >= 10 from second_table ordered by score (top first)
-SELECT score, nmae FROM second_table
+SELECT score, name FROM second_table 
 WHERE score >= 10
 ORDER BY socre DESC;
