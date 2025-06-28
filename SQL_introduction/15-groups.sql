@@ -1,4 +1,5 @@
 -- Lists the number of records for each scroe in second in second_table
-SELECT score, COUNT (*) AS number
+SELECT score, COUNT(*) AS number
 FROM second_table
-GROUP BY score ORDER BY number DESC;
+GROUP BY score 
+ORDER BY number DESC;
