@@ -1,12 +1,12 @@
--- Creates table second_table in the database and add multiple rows
--- if the table already exists, it will not fail
-CREATE TABLE_IF NOT EXISTS second_table (
+-- Create table second_table in the database and add multiple rows
+-- If the table already exists, it will not fail
+CREATE TABLE IF NOT EXISTS second_table (
     id INT,
     name VARCHAR(256),
     score INT
 );
 
--- Insert 4 records into second _table
+-- Insert the required records
 INSERT INTO second_table (id, name, score) VALUES
 (1, 'John', 10),
 (2, 'Alex', 3),
