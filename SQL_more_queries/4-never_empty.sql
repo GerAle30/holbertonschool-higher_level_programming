@@ -1,7 +1,7 @@
 -- Create table id_not_null with id having default value 1
 -- id field has default value 1
-name field is VARCHAR(256)
-Script should not fail if table already exists
+-- name field is VARCHAR(256)
+-- Script should not fail if table already exists
 
 CREATE TABLE OF NOT EXISTS id_not_null (
     id INT DEFAULT 1,
