@@ -1,43 +1,41 @@
 #!/usr/bin/python3
 """
-Script that lists all cities from the database hbtn_0e_4_usa
+Lists all cities of a given state from the database hbtn_0e_4_usa.
+Safe from SQL injection and sorted by cities.id.
 """
-
 import MySQLdb
 import sys
 
-
 if __name__ == "__main__":
-    # Get command line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
+    # Get arguments from command line
+    username, password, db_name, state_name = sys.argv[1:5]
 
-    # Connect to MySQL server
+    # Connect to the database
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=mysql_username,
-        passwd=mysql_password,
-        db=database_name
+        user=username,
+        passwd=password,
+        db=db_name
     )
 
-    # Create cursor object
-    cursor = db.cursor()
+    cur = db.cursor()
 
-    # Execute SQL query to join cities and states tables
-    cursor.execute("""SELECT cities.id, cities.name, states.name
-                      FROM cities
-                      JOIN states ON cities.state_id = states.id
-                      ORDER BY cities.id ASC""")
+    # Parameterized query to avoid SQL injection
+    query = """
+        SELECT cities.name
+        FROM cities
+        JOIN states ON cities.state_id = states.id
+        WHERE states.name = %s
+        ORDER BY cities.id ASC;
+    """
 
-    # Fetch all results
-    results = cursor.fetchall()
+    cur.execute(query, (state_name,))
+    rows = cur.fetchall()
 
-    # Print results
-    for row in results:
-        print(row)
+    # Print the results
+    print(", ".join([row[0] for row in rows]))
 
-    # Close cursor and database connection
-    cursor.close()
+    cur.close()
     db.close()
+
