@@ -3,6 +3,7 @@
 -- name field is VARCHAR(256)
 -- Script should not fail if table already exists
 
-CREATE TABLE OF NOT EXISTS id_not_null (id INT DEFAULT 1,
+CREATE TABLE IF NOT EXISTS id_not_null (
+    id INT DEFAULT 1,
     name VARCHAR(256)
 );
