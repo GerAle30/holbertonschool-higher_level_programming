@@ -42,6 +42,17 @@ This project demonstrates Python server-side rendering techniques using Flask an
   - Error handling for invalid sources and missing products
   - Table-based data display with styling
 
+### Task 4: Extending Dynamic Data Display to Include SQLite
+- **File**: `task_04_db.py`
+- **Description**: Flask application with JSON, CSV, and SQLite database support
+- **Features**:
+  - SQLite database integration with Python sqlite3 module
+  - Multi-source data display (JSON, CSV, SQL)
+  - Database table creation and data population
+  - SQL query execution and data retrieval
+  - Database error handling and connection management
+  - Unified template for all data sources
+
 ## Project Structure
 
 ```
@@ -50,6 +61,8 @@ python-server_side_rendering/
 ├── task_01_jinja.py          # Flask application with basic templates
 ├── task_02_logic.py          # Flask application with dynamic template logic
 ├── task_03_files.py          # Flask application for JSON/CSV data display
+├── task_04_db.py             # Flask application with SQLite database support
+├── create_database.py        # Database setup script
 ├── template.txt              # Invitation template
 ├── items.json                # JSON data for dynamic template
 ├── items_empty.json          # Empty JSON for testing
@@ -68,6 +81,7 @@ python-server_side_rendering/
 ├── test_dynamic.py           # Dynamic content test script
 ├── test_task_02_logic.py     # Task 2 specific test script
 ├── test_task_03.py           # Task 3 comprehensive test script
+├── test_task_04.py           # Task 4 SQLite database test script
 ├── main.py                   # Test script for task 0
 └── README.md                 # This file
 ```
@@ -127,6 +141,22 @@ python3 task_03_files.py
 # http://localhost:5000/products?source=json&id=999   (Product not found test)
 ```
 
+### Task 4 - SQLite Database Integration
+```bash
+# Create the database (run once)
+python3 create_database.py
+
+# Run the Flask application with database support
+python3 task_04_db.py
+
+# Then visit in your browser:
+# http://localhost:5000/products?source=sql           (All products from SQLite)
+# http://localhost:5000/products?source=sql&id=1      (Product ID 1 from SQLite)
+# http://localhost:5000/products?source=json          (JSON still works)
+# http://localhost:5000/products?source=csv           (CSV still works)
+# http://localhost:5000/products?source=sql&id=999    (Product not found test)
+```
+
 ### Testing Flask Applications
 ```bash
 # Test basic routes (Task 1)
@@ -140,6 +170,9 @@ python3 test_task_02_logic.py
 
 # Test file display functionality (Task 3)
 python3 test_task_03.py
+
+# Test SQLite database functionality (Task 4)
+python3 test_task_04.py
 ```
 
 ## Features
@@ -180,6 +213,18 @@ python3 test_task_03.py
 - ✅ Price formatting with currency symbol
 - ✅ Responsive table design with CSS
 - ✅ Usage examples and navigation links
+
+### Task 4 Features
+- ✅ SQLite database integration using Python's sqlite3 module
+- ✅ Database table creation with proper schema (id, name, category, price)
+- ✅ Multi-source data support (JSON, CSV, and SQL)
+- ✅ SQL query execution with SELECT statements
+- ✅ Database connection management with proper closing
+- ✅ Database error handling with try-except blocks
+- ✅ Same template reused for all data sources
+- ✅ Product filtering by ID from database
+- ✅ Database setup script for initialization
+- ✅ Backwards compatibility with existing JSON/CSV functionality
 
 ## Author
 
