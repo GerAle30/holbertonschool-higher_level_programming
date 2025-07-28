@@ -31,25 +31,40 @@ This project demonstrates Python server-side rendering techniques using Flask an
   - JSON file reading and parsing
   - Template filters for data manipulation
 
+### Task 3: Displaying Data from JSON or CSV Files
+- **File**: `task_03_files.py`
+- **Description**: Flask application for displaying product data from multiple file formats
+- **Features**:
+  - JSON and CSV file reading and parsing
+  - Query parameter handling for source selection
+  - Product filtering by ID
+  - Error handling for invalid sources and missing products
+  - Table-based data display with styling
+
 ## Project Structure
 
 ```
 python-server_side_rendering/
 ├── task_00_intro.py          # Template generation program
 ├── task_01_jinja.py          # Flask application with dynamic content
+├── task_03_files.py          # Flask application for JSON/CSV data display
 ├── template.txt              # Invitation template
 ├── items.json                # JSON data for dynamic template
 ├── items_empty.json          # Empty JSON for testing
 ├── items_extended.json       # Extended JSON for testing
+├── products.json             # Product data in JSON format
+├── products.csv              # Product data in CSV format
 ├── templates/                # Flask templates directory
 │   ├── header.html           # Reusable header component
 │   ├── footer.html           # Reusable footer component
 │   ├── index.html            # Home page template
 │   ├── about.html            # About page template
 │   ├── contact.html          # Contact page template
-│   └── items.html            # Dynamic items page template
+│   ├── items.html            # Dynamic items page template
+│   └── product_display.html  # Product data display template
 ├── test_flask.py             # Flask application test script
 ├── test_dynamic.py           # Dynamic content test script
+├── test_task_03.py           # Task 3 comprehensive test script
 ├── main.py                   # Test script for task 0
 └── README.md                 # This file
 ```
@@ -86,13 +101,30 @@ python3 task_01_jinja.py
 # http://localhost:5000/items   (Dynamic items page)
 ```
 
-### Testing Flask Routes
+### Task 3 - Product Data Display from Files
 ```bash
-# Test basic routes
+# Run the Flask application
+python3 task_03_files.py
+
+# Then visit in your browser:
+# http://localhost:5000/products?source=json          (All products from JSON)
+# http://localhost:5000/products?source=csv           (All products from CSV)
+# http://localhost:5000/products?source=json&id=1     (Product ID 1 from JSON)
+# http://localhost:5000/products?source=csv&id=2      (Product ID 2 from CSV)
+# http://localhost:5000/products?source=xml           (Invalid source test)
+# http://localhost:5000/products?source=json&id=999   (Product not found test)
+```
+
+### Testing Flask Applications
+```bash
+# Test basic routes (Task 1&2)
 python3 test_flask.py
 
-# Test dynamic content functionality
+# Test dynamic content functionality (Task 2)
 python3 test_dynamic.py
+
+# Test file display functionality (Task 3)
+python3 test_task_03.py
 ```
 
 ## Features
@@ -121,6 +153,18 @@ python3 test_dynamic.py
 - ✅ Conditional display: "No items found" when list is empty
 - ✅ Unordered list display of items
 - ✅ Item count display
+
+### Task 3 Features
+- ✅ JSON and CSV file reading with proper parsing
+- ✅ Query parameter handling (`source` and `id`)
+- ✅ Dynamic source selection (JSON vs CSV)
+- ✅ Product filtering by ID
+- ✅ Error handling for invalid sources ("Wrong source")
+- ✅ Error handling for missing products ("Product not found")
+- ✅ Table-based data display with HTML styling
+- ✅ Price formatting with currency symbol
+- ✅ Responsive table design with CSS
+- ✅ Usage examples and navigation links
 
 ## Author
 
