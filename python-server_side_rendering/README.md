@@ -22,14 +22,15 @@ This project demonstrates Python server-side rendering techniques using Flask an
   - Template inheritance using `{% include %}`
 
 ### Task 2: Creating a Dynamic Template with Loops and Conditions
-- **File**: `task_01_jinja.py` (enhanced)
-- **Description**: Enhanced Flask application with dynamic content
+- **File**: `task_02_logic.py`
+- **Description**: Flask application with dynamic template logic using loops and conditions
 - **Features**:
   - Dynamic content rendering from JSON data
   - Jinja loops (`{% for %}`) for iterating over items
   - Jinja conditions (`{% if %}`) for conditional display
   - JSON file reading and parsing
   - Template filters for data manipulation
+  - Unordered list display of items
 
 ### Task 3: Displaying Data from JSON or CSV Files
 - **File**: `task_03_files.py`
@@ -46,7 +47,8 @@ This project demonstrates Python server-side rendering techniques using Flask an
 ```
 python-server_side_rendering/
 ├── task_00_intro.py          # Template generation program
-├── task_01_jinja.py          # Flask application with dynamic content
+├── task_01_jinja.py          # Flask application with basic templates
+├── task_02_logic.py          # Flask application with dynamic template logic
 ├── task_03_files.py          # Flask application for JSON/CSV data display
 ├── template.txt              # Invitation template
 ├── items.json                # JSON data for dynamic template
@@ -64,6 +66,7 @@ python-server_side_rendering/
 │   └── product_display.html  # Product data display template
 ├── test_flask.py             # Flask application test script
 ├── test_dynamic.py           # Dynamic content test script
+├── test_task_02_logic.py     # Task 2 specific test script
 ├── test_task_03.py           # Task 3 comprehensive test script
 ├── main.py                   # Test script for task 0
 └── README.md                 # This file
@@ -89,7 +92,7 @@ python3 task_00_intro.py
 python3 main.py
 ```
 
-### Task 1 & 2 - Flask Application with Dynamic Content
+### Task 1 - Basic Flask Application with Templates
 ```bash
 # Run the Flask application
 python3 task_01_jinja.py
@@ -99,6 +102,15 @@ python3 task_01_jinja.py
 # http://localhost:5000/about   (About page)
 # http://localhost:5000/contact (Contact page)
 # http://localhost:5000/items   (Dynamic items page)
+```
+
+### Task 2 - Dynamic Template with Loops and Conditions
+```bash
+# Run the Flask application with dynamic logic
+python3 task_02_logic.py
+
+# Then visit in your browser:
+# http://localhost:5000/items   (Dynamic items page with loops and conditions)
 ```
 
 ### Task 3 - Product Data Display from Files
@@ -117,11 +129,14 @@ python3 task_03_files.py
 
 ### Testing Flask Applications
 ```bash
-# Test basic routes (Task 1&2)
+# Test basic routes (Task 1)
 python3 test_flask.py
 
 # Test dynamic content functionality (Task 2)
 python3 test_dynamic.py
+
+# Test Task 2 specific implementation
+python3 test_task_02_logic.py
 
 # Test file display functionality (Task 3)
 python3 test_task_03.py
